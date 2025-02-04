@@ -38,7 +38,9 @@ namespace OSPassBook
             PassGenerator generator = new PassGenerator();
             PassGeneratorRequest passRequest = generatePass(_pass.Header,_pass.Certificates);
             passRequest = addIcons(passRequest, _pass.icon);
-            passRequest = setPassStyle(passRequest, _pass.type, _pass.transitTypes);
+            OSPassTypes _passStyle = OSStringToPassType(_pass.style);
+            OSTransitTypes _transitType = OSStringToTransitType(_pass.transitTypes);
+            passRequest = setPassStyle(passRequest, _passStyle, _transitType);
             passRequest = addPrimaryFields(passRequest, _pass.primaryFields);
             passRequest = addSecondaryFields(passRequest, _pass.secondaryFields);   
             passRequest = addAuxiliaryFields(passRequest, _pass.auxiliaryFields);
@@ -238,5 +240,35 @@ namespace OSPassBook
             _request.ExpirationDate = _pass.expireDate;
             return _request;
         }
+
+        private OSPassTypes OSStringToPassType(string _text)
+        {
+            switch (_text)
+            {
+                case "Generic": return OSPassTypes.Generic;
+                case "BoardingPass": return OSPassTypes.BoardingPass;
+                case "Coupon": return OSPassTypes.Coupon;
+                case "EventTicket": return OSPassTypes.EventTicket;
+                case "StoreCard": return OSPassTypes.StoreCard;
+            }
+            throw new Exception("Unkown PassType. Select one of the following: 'Generic','BoardingPass','Coupon','EventTicket' or 'StoreCard'");
+        } 
+    
+
+   private OSTransitTypes OSStringToTransitType(string _text)
+        {
+            switch (_text)
+            {
+                case "Generic": return OSTransitTypes.Generic;
+                case "Bus": return OSTransitTypes.Bus;
+                case "Train": return OSTransitTypes.Train;
+                case "Boat": return OSTransitTypes.Boat;
+                case "Air": return OSTransitTypes.Air;
+            }
+            throw new Exception("Unkown PassType. Select one of the following: 'Generic','Bus','Train','Boat' or 'Air'");
+        }
     }
+
+
 }
+

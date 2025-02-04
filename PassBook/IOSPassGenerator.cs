@@ -21,9 +21,9 @@ namespace OSPassBook
         /// 
         /// For more info on the mandatory data check the official documentation.
         /// </summary>
-        /// <param name="_passs">This is the structure that hols all pass information</param>
+        /// <param name="passs">This is the structure that hols all pass information</param>
         /// <returns></returns>
-        public byte[] generatePassFullInfo(OSFullPass _passs);
+        public byte[] generatePassFullInfo(OSFullPass passs);
 
 
         //public byte[] generatePassBundle(List<OSPass> Passes);

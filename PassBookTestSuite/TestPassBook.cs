@@ -17,8 +17,8 @@ namespace PassBookTestSuite
             _testData.Header.serialNumber = "1234567890";
 
 
-            _testData.type = OSPassTypes.EventTicket;
-            _testData.transitTypes = OSTransitTypes.Generic;
+            _testData.style = "EventTicket";
+            _testData.transitTypes = "Generic";
             
 
             byte[] icon = File.ReadAllBytes("./Assets/Logo.png");
@@ -42,10 +42,10 @@ namespace PassBookTestSuite
             _testData.thumbnail.image3x = thumbnail;
 
             byte[] appleCert = File.ReadAllBytes("./Assets/AppleWWDRCAG4.cer");
-            byte[] devCert = File.ReadAllBytes("./Assets/CertificatePassId.p12");
+            byte[] devCert = File.ReadAllBytes("./Assets/fillwithyourcertificate.p12");
             _testData.Certificates.AppleWWDRCACertificate = appleCert;
             _testData.Certificates.PassbookCertificate = devCert;
-            _testData.Certificates.PassbookCertificatePassword = "Password";
+            _testData.Certificates.PassbookCertificatePassword = "fillwithyourpassword";
 
             _testData.primaryFields = new List<OSPassField>();
             _testData.primaryFields.Add(new OSPassField() { key= "event-name", value="NEO United vs Liberty NEO", label= "Match" });

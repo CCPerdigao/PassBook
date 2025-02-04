@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OSPassBook.Structures;
 using OutSystems.ExternalLibraries.SDK;
 
 namespace OSPassBook.Structures
@@ -57,7 +58,7 @@ namespace OSPassBook.Structures
 
     }
 
-    [OSStructure]
+    /*[OSStructure]
     public struct OSMinimalPass
     {
         [OSStructureField]
@@ -70,11 +71,11 @@ namespace OSPassBook.Structures
         public OSPassImage icon;
 
         [OSStructureField]
-        public OSPassTypes _type;
+        public OSPassTypes type;
 
         [OSStructureField]
-        public OSTransitTypes _tt;
-    }
+        public OSTransitTypes tt;
+    }*/
 
     [OSStructure]
     public struct OSFullPass
@@ -88,14 +89,32 @@ namespace OSPassBook.Structures
         [OSStructureField]
         public OSPassCertificates Certificates;
 
+
         [OSStructureField]
         public OSPassImage icon;
 
+        /// <summary>
+        /// This field sets the template for the Pass. Select one of:
+        /// - Generic
+        /// - BoardingPass
+        /// - Coupon
+        /// - EventTicket
+        /// - StoreCard
+        /// </summary>
         [OSStructureField]
-        public OSPassTypes type;
+        public string style;
 
+
+        /// <summary>
+        /// This field sets the required information for the transit types. Select one of:
+        /// - Generic
+        /// - Bus
+        /// - Train
+        /// - Boat
+        /// - Air
+        /// </summary>
         [OSStructureField]
-        public OSTransitTypes transitTypes;
+        public string transitTypes;
 
         [OSStructureField]
         public List<OSPassField> primaryFields;
@@ -164,5 +183,6 @@ namespace OSPassBook.Structures
         [OSStructureField]
         public string value;
     }
+
 
 }
